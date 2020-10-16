@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.avatarmind.greendaotest"
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    //todo greenDao相关
+    apply plugin: 'org.greenrobot.greendao'
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'org.greenrobot:greendao:3.2.0'
+    implementation 'org.greenrobot:greendao-generator:3.2.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+}
+
+//todo greenDao相关
+greendao {
+
+
+
+    /**
+     * 数据库版本
+     */
+    schemaVersion 1
+
+    /**
+     * greenDao输出到Dao数据库实体操作类文件目录
+     */
+    daoPackage 'greendao'
+    /**
+     * GreenDao实体类dao文件目录
+     */
+    targetGenDir 'src/main/java'
+}
